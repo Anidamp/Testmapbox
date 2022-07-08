@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect,  useState } from "react";
 import s from './Mapbox.module.css'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import Map,  { Marker } from "react-map-gl";
@@ -7,13 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export default function Mapbox() {
 
-/*   const [viewState, setViewState] = React.useState({
-    longitude: -100,
-    latitude: 40,
-    zoom: 3.5
-  }); */
 const [modalActive, setModalActive] = useState(false)
-const [currentColor, setCurrentColor] = useState()
 const [currentCoordinate, setCurrentCoordinate] = useState()
 const [count, setCount] = useState(0)
 const [markers, setMarkers] = React.useState([]);
@@ -54,7 +48,7 @@ function changeCoordinate(e, id) {
 }
 
 function changeMarker(e, id) {
-  setMarkers(markers.map((marker) => (marker.id === id?  {...marker, color: options[e.target.value]}: marker)))
+  setMarkers(markers.map((marker) => (marker.id === id?  {...marker, value:e.target.value , color: options[e.target.value]}: marker)))
 setIsButtonDelete(false)
 setModalActive(false)
 }
@@ -97,11 +91,11 @@ function buttonDeleteClick(id) {
             <div className={s.modal_container} onClick={(e) => e.stopPropagation()}>
               <p>Select a grade</p>
               <button className={s.buttonScore} onClick={!isButtonDelete? (e) => buttonClick(e) : (e) => changeMarker(e, currentId)} value={0}>0</button>
-              <button className={s.buttonScore} onClick={(e) => buttonClick(e)} value={1}>1</button>
-              <button className={s.buttonScore} onClick={(e) => buttonClick(e)} value={2}>2</button>
-              <button className={s.buttonScore} onClick={(e) => buttonClick(e)} value={3}>3</button>
-              <button className={s.buttonScore} onClick={(e) => buttonClick(e)} value={4}>4</button>
-              <button className={s.buttonScore} onClick={(e) => buttonClick(e)} value={5}>5</button>
+              <button className={s.buttonScore} onClick={!isButtonDelete? (e) => buttonClick(e) : (e) => changeMarker(e, currentId)} value={1}>1</button>
+              <button className={s.buttonScore} onClick={!isButtonDelete? (e) => buttonClick(e) : (e) => changeMarker(e, currentId)} value={2}>2</button>
+              <button className={s.buttonScore} onClick={!isButtonDelete? (e) => buttonClick(e) : (e) => changeMarker(e, currentId)} value={3}>3</button>
+              <button className={s.buttonScore} onClick={!isButtonDelete? (e) => buttonClick(e) : (e) => changeMarker(e, currentId)} value={4}>4</button>
+              <button className={s.buttonScore} onClick={!isButtonDelete? (e) => buttonClick(e) : (e) => changeMarker(e, currentId)} value={5}>5</button>
               {isButtonDelete && <button className={s.buttonDelete} onClick ={() => buttonDeleteClick(currentId)}>Delete</button>}
             </div>
         </div>}
