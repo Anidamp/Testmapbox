@@ -2,7 +2,7 @@
   "name": "testmap",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Anidamp.github.io/Testmap",
+  "homepage": "https://Anidamp.github.io/Testmapbox",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -34,7 +34,11 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "not ie 11",  
+      "not chrome < 51", 
+      "not safari < 10", 
+      "not android < 51"
     ],
     "development": [
       "last 1 chrome version",
